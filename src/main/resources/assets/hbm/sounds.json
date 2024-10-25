@@ -208,11 +208,15 @@
     "weapon.coilgunShoot": {"category": "player", "sounds": [{"name": "weapon/coilgunShoot", "stream": false}]},
     "weapon.glReload": {"category": "player", "sounds": [{"name": "weapon/glReload", "stream": false}]},
     "weapon.glShoot": {"category": "player", "sounds": [{"name": "weapon/glShoot", "stream": false}]},
+    "weapon.glOpen": {"category": "player", "sounds": [{"name": "weapon/glOpen", "stream": false}]},
+    "weapon.glClose": {"category": "player", "sounds": [{"name": "weapon/glClose", "stream": false}]},
     "weapon.44Shoot": {"category": "player", "sounds": [{"name": "weapon/44Shoot", "stream": false}]},
     "weapon.trainImpact": {"category": "player", "sounds": [{"name": "weapon/trainImpact", "stream": false}]},
     "weapon.nuclearExplosion": {"category": "player", "sounds": [{"name": "weapon/nuclearExplosion", "stream": true}]},
     "weapon.explosionLargeNear": {"category": "player", "sounds": [{"name": "weapon/explosionLargeNear", "stream": false}]},
     "weapon.explosionLargeFar": {"category": "player", "sounds": [{"name": "weapon/explosionLargeFar", "stream": false}]},
+    "weapon.explosionSmallNear": {"category": "player", "sounds": ["weapon/explosionSmallNear1", "weapon/explosionSmallNear2", "weapon/explosionSmallNear3"]},
+    "weapon.explosionSmallFar": {"category": "player", "sounds": ["weapon/explosionSmallFar1", "weapon/explosionSmallFar2"]},
     
     "weapon.dFlash": {"category": "player", "sounds": [{"name": "weapon/dFlash", "stream": false}]},
 
@@ -221,6 +225,9 @@
     "weapon.switchmode2": {"category": "player", "sounds": [{"name": "weapon/switchmode2", "stream": false}]},
     
     "weapon.fire.blackPowder": {"category": "player", "sounds": [{"name": "weapon/fire/blackPowder", "stream": false}]},
+    "weapon.fire.flameLoop": {"category": "player", "sounds": [{"name": "weapon/fire/flameLoop", "stream": false}]},
+    "weapon.fire.lockon": {"category": "player", "sounds": [{"name": "weapon/fire/lockon", "stream": false}]},
+    "weapon.fire.shredderCycle": {"category": "player", "sounds": [{"name": "weapon/fire/shredderCycle", "stream": false}]},
     
     "weapon.reload.boltClose": {"category": "player", "sounds": ["weapon/reload/boltClose"]},
     "weapon.reload.boltOpen": {"category": "player", "sounds": ["weapon/reload/boltOpen"]},

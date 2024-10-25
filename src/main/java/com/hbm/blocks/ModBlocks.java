@@ -845,12 +845,7 @@ public class ModBlocks {
 	public static Block struct_icf_core;
 	
 	public static Block factory_titanium_hull;
-	@Deprecated public static Block factory_titanium_furnace;
-	@Deprecated public static Block factory_titanium_conductor;
-	
 	public static Block factory_advanced_hull;
-	@Deprecated public static Block factory_advanced_furnace;
-	@Deprecated public static Block factory_advanced_conductor;
 
 	public static Block cm_block;
 	public static Block cm_sheet;
@@ -1200,8 +1195,6 @@ public class ModBlocks {
 
 	public static Block dummy_block_vault;
 	public static Block dummy_block_blast;
-	public static Block dummy_block_uf6;
-	public static Block dummy_block_puf6;
 	public static Block dummy_plate_compact_launcher;
 	public static Block dummy_port_compact_launcher;
 	public static Block dummy_plate_launch_table;
@@ -1422,11 +1415,11 @@ public class ModBlocks {
 		block_slag = new BlockSlag(Material.rock).setBlockName("block_slag").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeStone).setHardness(2.0F).setBlockTextureName(RefStrings.MODID + ":block_slag");
 		
 		block_australium = new BlockBeaconable(Material.iron).setBlockName("block_australium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_australium");
-		block_weidanium = new BlockBeaconable(Material.iron).setBlockName("block_weidanium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_weidanium");
-		block_reiium = new BlockBeaconable(Material.iron).setBlockName("block_reiium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_reiium");
-		block_unobtainium = new BlockBeaconable(Material.iron).setBlockName("block_unobtainium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_unobtainium");
-		block_daffergon = new BlockBeaconable(Material.iron).setBlockName("block_daffergon").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_daffergon");
-		block_verticium = new BlockBeaconable(Material.iron).setBlockName("block_verticium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_verticium");
+		block_weidanium = new BlockBeaconable(Material.iron).setBlockName("block_weidanium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_deprecated");
+		block_reiium = new BlockBeaconable(Material.iron).setBlockName("block_reiium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_deprecated");
+		block_unobtainium = new BlockBeaconable(Material.iron).setBlockName("block_unobtainium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_deprecated");
+		block_daffergon = new BlockBeaconable(Material.iron).setBlockName("block_daffergon").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_deprecated");
+		block_verticium = new BlockBeaconable(Material.iron).setBlockName("block_verticium").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":block_deprecated");
 		
 		block_cap = new BlockCap().setBlockName("block_cap").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(10.0F);
 		
@@ -1955,11 +1948,7 @@ public class ModBlocks {
 		struct_icf_core = new BlockICFStruct(Material.iron).setBlockName("struct_icf_core").setLightLevel(1F).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":struct_icf_core");
 		
 		factory_titanium_hull = new BlockGeneric(Material.iron).setBlockName("factory_titanium_hull").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":factory_titanium_hull");
-		factory_titanium_furnace = new FactoryHatch(Material.iron).setBlockName("factory_titanium_furnace").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":factory_titanium_furnace");
-		factory_titanium_conductor = new BlockPillar(Material.iron, RefStrings.MODID + ":factory_titanium_conductor").setBlockName("factory_titanium_conductor").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":factory_titanium_hull");
 		factory_advanced_hull = new BlockGeneric(Material.iron).setBlockName("factory_advanced_hull").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":factory_advanced_hull");
-		factory_advanced_furnace = new FactoryHatch(Material.iron).setBlockName("factory_advanced_furnace").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":factory_advanced_furnace");
-		factory_advanced_conductor = new BlockPillar(Material.iron, RefStrings.MODID + ":factory_advanced_conductor").setBlockName("factory_advanced_conductor").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":factory_advanced_hull");
 
 		cm_block = new BlockCM(Material.iron, EnumCMMaterials.class, true, true).setBlockName("cm_block").setCreativeTab(MainRegistry.machineTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":cm_block");
 		cm_sheet = new BlockCM(Material.iron, EnumCMMaterials.class, true, true).setBlockName("cm_sheet").setCreativeTab(MainRegistry.machineTab).setHardness(5.0F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":cm_sheet");
@@ -2325,8 +2314,6 @@ public class ModBlocks {
 
 		dummy_block_vault = new DummyBlockVault(Material.iron).setBlockName("dummy_block_vault").setHardness(10.0F).setResistance(10000.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		dummy_block_blast = new DummyBlockBlast(Material.iron).setBlockName("dummy_block_blast").setHardness(10.0F).setResistance(10000.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_steel");
-		dummy_block_uf6 = new DummyBlockMachine(Material.iron, machine_uf6_tank, false).setBlockName("dummy_block_uf6").setHardness(5.0F).setResistance(10.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_titanium");
-		dummy_block_puf6 = new DummyBlockMachine(Material.iron, machine_puf6_tank, false).setBlockName("dummy_block_puf6").setHardness(5.0F).setResistance(10.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		dummy_plate_compact_launcher = new DummyBlockMachine(Material.iron, compact_launcher, false).setBounds(0, 16, 0, 16, 16, 16).setBlockName("dummy_plate_compact_launcher").setHardness(5.0F).setResistance(10.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		dummy_port_compact_launcher = new DummyBlockMachine(Material.iron, compact_launcher, true).setBlockName("dummy_port_compact_launcher").setHardness(5.0F).setResistance(10.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		dummy_plate_launch_table = new DummyBlockMachine(Material.iron, launch_table, false).setBounds(0, 16, 0, 16, 16, 16).setBlockName("dummy_plate_launch_table").setHardness(5.0F).setResistance(10.0F).setCreativeTab(null).setBlockTextureName(RefStrings.MODID + ":block_steel");
@@ -3418,8 +3405,6 @@ public class ModBlocks {
 		//Multiblock Dummy Blocks
 		GameRegistry.registerBlock(dummy_block_vault, dummy_block_vault.getUnlocalizedName());
 		GameRegistry.registerBlock(dummy_block_blast, dummy_block_blast.getUnlocalizedName());
-		GameRegistry.registerBlock(dummy_block_uf6, dummy_block_uf6.getUnlocalizedName());
-		GameRegistry.registerBlock(dummy_block_puf6, dummy_block_puf6.getUnlocalizedName());
 		GameRegistry.registerBlock(dummy_plate_compact_launcher, dummy_plate_compact_launcher.getUnlocalizedName());
 		GameRegistry.registerBlock(dummy_port_compact_launcher, dummy_port_compact_launcher.getUnlocalizedName());
 		GameRegistry.registerBlock(dummy_plate_launch_table, dummy_plate_launch_table.getUnlocalizedName());

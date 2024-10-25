@@ -2,17 +2,16 @@ package com.hbm.items.weapon.sedna.factory;
 
 import java.util.function.BiFunction;
 
-import com.hbm.handler.CasingEjector;
 import com.hbm.items.ModItems;
 import com.hbm.items.weapon.sedna.BulletConfig;
 import com.hbm.items.weapon.sedna.Crosshair;
 import com.hbm.items.weapon.sedna.GunConfig;
 import com.hbm.items.weapon.sedna.ItemGunBaseNT;
 import com.hbm.items.weapon.sedna.Receiver;
+import com.hbm.items.weapon.sedna.ItemGunBaseNT.WeaponQuality;
 import com.hbm.items.weapon.sedna.factory.GunFactory.EnumAmmo;
 import com.hbm.items.weapon.sedna.mags.MagazineFullReload;
 import com.hbm.items.weapon.sedna.mags.MagazineSingleReload;
-import com.hbm.lib.RefStrings;
 import com.hbm.particle.SpentCasing;
 import com.hbm.particle.SpentCasing.CasingType;
 import com.hbm.render.anim.BusAnimation;
@@ -43,28 +42,28 @@ public class XFactory44 {
 		m44_express = new BulletConfig().setItem(EnumAmmo.M44_EXPRESS).setDoesPenetrate(true).setDamage(1.5F).setArmorPiercing(0.1F).setWear(1.5F)
 				.setCasing(casing44.clone().register("m44express"));
 
-		ModItems.gun_henry = new ItemGunBaseNT(new GunConfig()
-				.dura(300).draw(15).inspect(23).jam(45).reloadSequential(true).crosshair(Crosshair.CIRCLE).smoke(Lego.LAMBDA_STANDARD_SMOKE).orchestra(Orchestras.ORCHESTRA_HENRY)
+		ModItems.gun_henry = new ItemGunBaseNT(WeaponQuality.A_SIDE, new GunConfig()
+				.dura(300).draw(15).inspect(23).reloadSequential(true).crosshair(Crosshair.CIRCLE).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
-						.dmg(12F).delay(20).reload(25, 11, 14, 8).sound("hbm:weapon.fire.blackPowder", 1.0F, 1.0F)
+						.dmg(12F).delay(20).reload(25, 11, 14, 8).jam(45).sound("hbm:weapon.fire.blackPowder", 1.0F, 1.0F)
 						.mag(new MagazineSingleReload(0, 14).addConfigs(m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
 						.offset(0.75, -0.0625, -0.1875D)
-						.canFire(Lego.LAMBDA_STANDARD_CAN_FIRE).fire(Lego.LAMBDA_STANDARD_FIRE).recoil(Lego.LAMBDA_STANDARD_RECOIL))
-				.setupStandardConfiguration().anim(LAMBDA_HENRY_ANIMS)
-				).setUnlocalizedName("gun_henry").setTextureName(RefStrings.MODID + ":gun_darter");
+						.setupStandardFire().recoil(Lego.LAMBDA_STANDARD_RECOIL))
+				.setupStandardConfiguration()
+				.anim(LAMBDA_HENRY_ANIMS).orchestra(Orchestras.ORCHESTRA_HENRY)
+				).setUnlocalizedName("gun_henry");
 		
-		ModItems.gun_heavy_revolver = new ItemGunBaseNT(new GunConfig()
-				.dura(600F).draw(10).jam(23).inspect(23).crosshair(Crosshair.L_CLASSIC).smoke(Lego.LAMBDA_STANDARD_SMOKE).orchestra(Orchestras.ORCHESTRA_NOPIP)
+		ModItems.gun_heavy_revolver = new ItemGunBaseNT(WeaponQuality.A_SIDE, new GunConfig()
+				.dura(600F).draw(10).inspect(23).crosshair(Crosshair.L_CLASSIC).smoke(Lego.LAMBDA_STANDARD_SMOKE)
 				.rec(new Receiver(0)
-						.dmg(10F).delay(14).reload(46).sound("hbm:weapon.44Shoot", 1.0F, 1.0F)
+						.dmg(10F).delay(14).reload(46).jam(23).sound("hbm:weapon.44Shoot", 1.0F, 1.0F)
 						.mag(new MagazineFullReload(0, 6).addConfigs(m44_sp, m44_fmj, m44_jhp, m44_ap, m44_express))
-						.ejector(new CasingEjector().setMotion(0, -0.1, 0).setAngleRange(0.01F, 0.025F))
 						.offset(0.75, -0.0625, -0.3125D)
-						.canFire(Lego.LAMBDA_STANDARD_CAN_FIRE).fire(Lego.LAMBDA_STANDARD_FIRE))
+						.setupStandardFire().recoil(Lego.LAMBDA_STANDARD_RECOIL))
 				.pp(Lego.LAMBDA_STANDARD_CLICK_PRIMARY) .pr(Lego.LAMBDA_STANDARD_RELOAD) .pt(Lego.LAMBDA_TOGGLE_AIM)
 				.decider(GunStateDecider.LAMBDA_STANDARD_DECIDER)
-				.anim(LAMBDA_NOPIP_ANIMS)
-				).setUnlocalizedName("gun_heavy_revolver").setTextureName(RefStrings.MODID + ":gun_darter");
+				.anim(LAMBDA_NOPIP_ANIMS).orchestra(Orchestras.ORCHESTRA_NOPIP)
+				).setUnlocalizedName("gun_heavy_revolver");
 	}
 
 	@SuppressWarnings("incomplete-switch") public static BiFunction<ItemStack, AnimType, BusAnimation> LAMBDA_HENRY_ANIMS = (stack, type) -> {
@@ -91,7 +90,7 @@ public class XFactory44 {
 				.addBus("TWIST", new BusAnimationSequence().addPos(0, 0, -90, 0))
 				.addBus("BULLET", new BusAnimationSequence().addPos(3, 0, -6, 0).addPos(0, 0, 1, 300, IType.SIN_FULL).addPos(0, 0, 0, 250, IType.SIN_FULL));
 		case RELOAD_END:
-			boolean empty = ((ItemGunBaseNT) stack.getItem()).getConfig(stack).getReceivers(stack)[0].getMagazine(stack).getAmountBeforeReload(stack) <= 0;
+			boolean empty = ((ItemGunBaseNT) stack.getItem()).getConfig(stack, 0).getReceivers(stack)[0].getMagazine(stack).getAmountBeforeReload(stack) <= 0;
 			return new BusAnimation()
 				.addBus("LIFT", new BusAnimationSequence().addPos(-60, 0, 0, 0).addPos(-60, 0, 0, 300).addPos(0, 0, 0, 400, IType.SIN_FULL))
 				.addBus("TWIST", new BusAnimationSequence().addPos(0, 0, -90, 0).addPos(0, 0, 0, 200, IType.SIN_FULL))

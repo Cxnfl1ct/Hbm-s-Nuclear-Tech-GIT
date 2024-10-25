@@ -15,7 +15,7 @@ public class ItemRenderAm180 extends ItemRenderWeaponBase {
 	protected float getTurnMagnitude(ItemStack stack) { return ItemGunBaseNT.getIsAiming(stack) ? 2.5F : -0.5F; }
 
 	@Override
-	protected void setupFirstPerson(ItemStack stack) {
+	public void setupFirstPerson(ItemStack stack) {
 		GL11.glTranslated(0, 0, 0.875);
 		
 		float offset = 0.8F;
@@ -50,12 +50,18 @@ public class ItemRenderAm180 extends ItemRenderWeaponBase {
 		
 		GL11.glTranslated(0, 0, recoil[2]);
 
+		HbmAnimations.applyRelevantTransformation("Gun");
 		ResourceManager.am180.renderPart("Gun");
 		ResourceManager.am180.renderPart("Silencer");
+
+		GL11.glPushMatrix();
+		HbmAnimations.applyRelevantTransformation("Trigger");
 		ResourceManager.am180.renderPart("Trigger");
+		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(0, 0, bolt[2]);
+		HbmAnimations.applyRelevantTransformation("Bolt");
 		ResourceManager.am180.renderPart("Bolt");
 		GL11.glPopMatrix();
 
@@ -70,9 +76,11 @@ public class ItemRenderAm180 extends ItemRenderWeaponBase {
 		GL11.glTranslated(0, 2.3125, 1.5);
 		GL11.glRotated(magSpin[0], 1, 0, 0);
 		GL11.glTranslated(0, -2.3125, -1.5);
+
+		HbmAnimations.applyRelevantTransformation("Mag");
 		
 		GL11.glPushMatrix();
-		int mag = gun.getConfig(stack).getReceivers(stack)[0].getMagazine(stack).getAmount(stack);
+		int mag = gun.getConfig(stack, 0).getReceivers(stack)[0].getMagazine(stack).getAmount(stack);
 		GL11.glTranslated(0, 0, 1.5);
 		GL11.glRotated(mag / 59D * 360D, 0, -1, 0);
 		GL11.glTranslated(0, 0, -1.5);
@@ -86,7 +94,7 @@ public class ItemRenderAm180 extends ItemRenderWeaponBase {
 		GL11.glTranslated(0, 1.875, 17);
 		GL11.glRotated(turn[2], 0, 0, -1);
 		GL11.glRotated(90, 0, 1, 0);
-		this.renderSmokeNodes(gun.smokeNodes, 0.25D);
+		this.renderSmokeNodes(gun.getConfig(stack, 0).smokeNodes, 0.25D);
 		GL11.glPopMatrix();
 		
 		GL11.glShadeModel(GL11.GL_FLAT);
@@ -96,12 +104,12 @@ public class ItemRenderAm180 extends ItemRenderWeaponBase {
 		GL11.glRotated(90, 0, 1, 0);
 		GL11.glRotated(90 * gun.shotRand, 1, 0, 0);
 		GL11.glScaled(0.5, 0.5, 0.5);
-		this.renderMuzzleFlash(gun.lastShot, 75, 5);
+		this.renderMuzzleFlash(gun.lastShot[0], 75, 5);
 		GL11.glPopMatrix();
 	}
 
 	@Override
-	protected void setupThirdPerson(ItemStack stack) {
+	public void setupThirdPerson(ItemStack stack) {
 		super.setupThirdPerson(stack);
 		double scale = 1D;
 		GL11.glScaled(scale, scale, scale);
@@ -110,7 +118,7 @@ public class ItemRenderAm180 extends ItemRenderWeaponBase {
 	}
 
 	@Override
-	protected void setupInv(ItemStack stack) {
+	public void setupInv(ItemStack stack) {
 		super.setupInv(stack);
 		double scale = 0.75D;
 		GL11.glScaled(scale, scale, scale);
